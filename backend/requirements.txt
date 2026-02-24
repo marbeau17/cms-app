@@ -1,7 +1,7 @@
-fastapi==0.115.0
-uvicorn[standard]==0.30.0
-aioftp==0.22.3
-chardet==5.2.0
-httpx==0.27.0
-python-multipart==0.0.9
-pydantic==2.8.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+aioftp>=0.22.3
+chardet>=5.2.0
+httpx>=0.27.0
+python-multipart>=0.0.9
+pydantic>=2.10.0
