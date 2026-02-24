@@ -1,0 +1,27 @@
+services:
+  bff:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - FTP_HOST=${FTP_HOST:-localhost}
+      - FTP_USER=${FTP_USER:-anonymous}
+      - FTP_PASS=${FTP_PASS:-}
+      - FTP_BASE_PATH=${FTP_BASE_PATH:-/}
+      - BANANA_API_KEY=${BANANA_API_KEY:-}
+      - BANANA_API_URL=${BANANA_API_URL:-https://api.nanobanana.com/v1}
+      - CORS_ORIGINS=http://localhost:5173
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    depends_on:
+      - bff
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
